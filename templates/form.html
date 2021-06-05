@@ -1,0 +1,116 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <h1>New Master Incident</h1>
+        <h2>Intial Reporting</h2>
+        <br>
+        <form method="POST" action="/form">
+        {% csrf_token %}
+            <div class="form-group row">
+                <label for="location" class="col-sm-2 col-form-label">Location:</label>
+                <div class="col-sm-4">
+                    <select id="location" class="form-control" name="location">
+                        <option selected>Corporate Headoffice</option>
+                        <option>Operational Department</option>
+                        <option>Work Station</option>
+                        <option>Marketing Devision</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="comment" class="col-sm-2 col-form-label">Incident description:</label>
+                <div class="col-sm-5">
+                    <textarea type="text" class="form-control" id="inputdesc" placeholder="..." 
+                    name="incident_description"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="date" class="col-sm-2 col-form-label">Date and Time of Incident:</label>
+                <div class="col-sm-10">
+                    <input type="date" class="col-form-label" value="" name="date">
+                    <input type="time" class="col-form-label" value="" name="time">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="comment" class="col-sm-2 col-form-label">Incident location:</label>
+                <div class="col-sm-5">
+                    <textarea type="text" class="form-control" id="inputdesc" placeholder="..."
+                    name="incident_location"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="" class="col-sm-2 col-form-label">initial Severity:</label>
+                <div class="col-sm-2">
+                    <select id="inputState" class="form-control" name="initial_severity">
+                        <option selected>Mild</option>
+                        <option>Moderate</option>
+                        <option>Sever</option>
+                        <option>Fatal</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="comments" class="col-sm-2 col-form-label">Suspected Cause:</label>
+                <div class="col-sm-5">
+                    <textarea type="text" class="form-control" id="inputSuspected" placeholder="..."
+                    name="suspected_cause"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="comment" class="col-sm-2 col-form-label">Immediate Actions Taken:</label>
+                <div class="col-sm-5">
+                    <textarea type="text" class="form-control" id="inputIAT" placeholder="..."
+                    name="immediate_actions_taken"></textarea>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="comment" class="col-sm-2 col-form-label">Sub Incident type:</label>
+                <div class="col-sm-5">
+                    <fieldset class="checkbox">
+                        <label>
+                            <input type="checkbox" value="Enviornmental Incident" name="checks[]"> Enviornmental Incident
+                        </label>
+                    </fieldset>
+                    <fieldset class="checkbox">
+                        <label>
+                            <input type="checkbox" value="Injury/Illness" name="checks[]"> Injury/Illness
+                        </label>
+                    </fieldset>
+                    <fieldset class="checkbox">
+                        <label>
+                            <input type="checkbox" value="Property Damage" name="checks[]"> Property Damage
+                        </label>
+                    </fieldset>
+                    <fieldset class="checkbox">
+                        <label>
+                            <input type="checkbox" value="Vehicle" name="checks[]"> Vehicle
+                        </label>
+                    </fieldset>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="staticUser" class="col-sm-2 col-form-label">Reported By:</label>
+                <div class="col-sm-5">
+                    <input type="text" readonly class="form-control-plaintext" id="staticUser"
+                    value="{{request.user}}" name="user">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col-sm-10">
+                    <input class="btn btn-primary" type="submit" value="Save">
+                    <input class="btn btn-primary" type="reset" value="Save for later">
+                    <a class="btn btn-secondary" href="/"> Cancel </a>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</div>
+
+
+{% endblock %}
